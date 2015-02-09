@@ -1,0 +1,34 @@
+.container
+  h1 Products
+
+  table.table.table-striped
+    thead
+      tr
+        th Name
+        /th Active
+        /th Vendor
+        th Unit price
+        th Stock qty
+        th Reserved qty
+        th Min qty
+        th
+        th
+        th
+
+    tbody
+      - @products.each do |product|
+        tr
+          td = product.name
+          /td = product.active
+          /td = product.vendor_id
+          td = product.unit_price
+          td = product.stock_qty
+          td = product.reserved_qty.to_i
+          td = product.min_qty
+          td = link_to 'Show', product
+          td = link_to 'Edit', edit_product_path(product)
+          td = link_to 'Destroy', product, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+  br
+
+  = link_to 'New Product', new_product_path, class: "btn btn-default"

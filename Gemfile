@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'rails_workflow', '0.2.0'
 gem "bootstrap-rails-engine"
+gem "symbolize"
 gem "will_paginate"
 gem "sidekiq"
 group :development do

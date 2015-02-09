@@ -1,0 +1,24 @@
+.container
+  h1.page-header Listing orders
+
+
+  table.table.table-striped
+    thead
+      tr
+        th Order
+        th Customer
+        th
+        th
+
+    tbody
+      - @orders.each do |order|
+        tr
+          td = "##{order.id}"
+          td = order.customer.email
+          td = link_to 'Show', order
+          td = link_to 'Edit', edit_order_path(order)
+          td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+  br
+
+  = link_to 'New Order', new_order_path, class: "btn btn-default"

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  active: false
+  vendor_id: 1
+  unit_price: 1.5
+  stock_qty: 1
+  reserved_qty: 1
+  min_qty: 1
+
+two:
+  name: MyString
+  active: false
+  vendor_id: 1
+  unit_price: 1.5
+  stock_qty: 1
+  reserved_qty: 1
+  min_qty: 1

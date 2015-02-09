@@ -1,0 +1,20 @@
+.container
+
+  p#notice = notice
+
+  p
+    strong Customer:
+    = @order.customer.email
+
+  - @order.lines.each do |line|
+    p
+      strong Name:
+      = line.name
+    p
+      strong Quantity:
+      = line.qty
+
+
+  = link_to 'Edit', edit_order_path(@order)
+  '|
+  = link_to 'Back', orders_path

@@ -1,0 +1,14 @@
+= simple_form_for(@product) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    /= f.input :active
+    /= f.input :vendor_id
+    = f.input :unit_price
+    = f.input :stock_qty
+    /= f.input :reserved_qty
+    = f.input :min_qty
+
+  .form-actions
+    = f.button :submit
