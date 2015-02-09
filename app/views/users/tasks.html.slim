@@ -1,0 +1,89 @@
+
+h1 Tasks
+
+p
+  | Current User:
+  span<>= current_user.email
+  span<>= "role: #{current_user.role}"
+
+.row
+  .col-sm-6
+    - if current_operation
+      .panel
+        .panel-heading
+          h1.panel-title Current Operation
+
+        .panel-body
+
+          table.table.table-striped.table-hover
+            thead
+              tr
+                th Title
+                th Status
+                th
+
+            tbody
+              tr
+                td
+                  = current_operation.title
+                td
+                  span.label<> class=(current_operation.status[:class])
+                    = current_operation.status[:text]
+                td
+                  .btn-group
+                    button.btn.btn-primary.dropdown-toggle aria-expanded="false" data-toggle="dropdown" type="button"
+                      | Complete
+                      span.caret<
+                    ul.dropdown-menu role="menu"
+                      li
+                        = link_to 'Complete', workflow.complete_operation_path(current_operation)
+                      li
+                        = link_to 'Skip', workflow.skip_operation_path(current_operation)
+                      li
+                        = link_to "Cancel", workflow.cancel_operation_path(current_operation)
+
+
+
+    .panel
+      .panel-heading
+        h1.panel-title Operations, Assigned to user
+
+      .panel-body
+        table.table.table-striped.table-hover
+          thead
+            tr
+              th Title
+              th Status
+              th
+
+          tbody
+            - assigned_operations.each do |operation|
+              tr
+                td = operation.title
+                td
+                  span.label<> class=(operation.status[:class])
+                    = operation.status[:text]
+                td = button_to 'Start', workflow.pickup_operation_path(operation), class: "btn btn-primary btn-sm", method: :put
+
+  .col-sm-6
+    .panel
+      .panel-heading
+        h1.panel-title Available
+
+      .panel-body
+
+        table.table.table-striped.table-hover
+          thead
+            tr
+              th Title
+              th Status
+              th
+
+          tbody
+            - available_operations.each do |operation|
+              tr
+                td = operation.title
+                td
+                  span.label<> class=(operation.status[:class])
+                    = operation.status[:text]
+                td = button_to 'Start', workflow.pickup_operation_path(operation), class: "btn btn-primary btn-sm", method: :put

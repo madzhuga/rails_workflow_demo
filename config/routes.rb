@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
+  get "/tasks", to: "users#tasks"
+
   mount Workflow::Engine => '/workflow', as: 'workflow'
 end

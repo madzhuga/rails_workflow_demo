@@ -4,5 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  symbolize :role, in: [:admin, :customer, :sale, :stock]
+  # symbolize :role, in: [:admin, :customer, :sale, :stock]
+
+  def self.get_role_values
+    [["Admin", "admin"], ["Customers", "customer"], ["Sales Team", "sale"], ["Stock Provisioning", "stock"]]
+  end
+  include Workflow::User::Assignment
+
 end

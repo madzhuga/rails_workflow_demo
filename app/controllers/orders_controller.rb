@@ -11,8 +11,30 @@ class OrdersController < InheritedResources::Base
         order_params.merge(customer: current_user)
     )
 
-    create!
+    create! do |success, failure|
+      success.html do
+        process_template_id = 1
+        Workflow::ProcessManager.start_process(
+            process_template_id , { resource: resource }
+        )
+
+        redirect_to orders_path
+      end
+    end
   end
+
+  def update
+    update! do |success, failure|
+      success.html do
+        if current_operation && (params['commit'] == 'Complete')
+          current_operation.complete
+        end
+
+        redirect_to root_path
+      end
+    end
+  end
+
 
   private
 

@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    symbolizes:
+      user:
+        role:
+          admin: Admin
+          customer: Customer
+          sale: Sales Team
+          stock: Stock Team
