@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   get "/tasks", to: "users#tasks"
 
-  mount Workflow::Engine => '/workflow', as: 'workflow'
+  mount RailsWorkflow::Engine => '/workflow', as: 'workflow'
 end

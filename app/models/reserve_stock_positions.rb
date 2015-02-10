@@ -1,4 +1,4 @@
-class ReserveStockPositions < Workflow::Operation
+class ReserveStockPositions < RailsWorkflow::Operation
   def execute
     resource = data[:resource]
     resource.lines.each do |order_line|

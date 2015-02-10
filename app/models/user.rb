@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   def self.get_role_values
     [["Admin", "admin"], ["Customers", "customer"], ["Sales Team", "sale"], ["Stock Provisioning", "stock"]]
   end
-  include Workflow::User::Assignment
+  include RailsWorkflow::User::Assignment
 
 end

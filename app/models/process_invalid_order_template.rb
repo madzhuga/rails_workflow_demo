@@ -1,4 +1,4 @@
-class ProcessInvalidOrderTemplate < Workflow::OperationTemplate
+class ProcessInvalidOrderTemplate < RailsWorkflow::OperationTemplate
   def build_operation operation
     resource = operation.data[:resource]
     operation.title += " ##{resource.id}"

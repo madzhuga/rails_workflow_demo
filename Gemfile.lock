@@ -111,7 +111,7 @@ GEM
       railties (= 4.1.9)
       sprockets-rails (~> 2.0)
     rails_layout (1.0.24)
-    rails_workflow (0.2.0)
+    rails_workflow (0.2.1)
       bootstrap-rails-engine
       draper
       inherited_resources
@@ -208,7 +208,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.9)
   rails_layout
-  rails_workflow (= 0.2.0)
+  rails_workflow (= 0.2.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   sidekiq

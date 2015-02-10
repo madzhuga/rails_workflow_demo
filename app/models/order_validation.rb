@@ -1,4 +1,4 @@
-class OrderValidation < Workflow::Operation
+class OrderValidation < RailsWorkflow::Operation
   def execute
     self.data[:orderValid] = false
     save

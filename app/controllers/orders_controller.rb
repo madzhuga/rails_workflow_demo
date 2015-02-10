@@ -14,7 +14,7 @@ class OrdersController < InheritedResources::Base
     create! do |success, failure|
       success.html do
         process_template_id = 1
-        Workflow::ProcessManager.start_process(
+        RailsWorkflow::ProcessManager.start_process(
             process_template_id , { resource: resource }
         )
 

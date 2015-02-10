@@ -1,4 +1,4 @@
-class ProcessInvalidOrder < Workflow::UserByRoleOperation
+class ProcessInvalidOrder < RailsWorkflow::UserByRoleOperation
   def on_complete
     self.data[:orderValid] = true
     save
