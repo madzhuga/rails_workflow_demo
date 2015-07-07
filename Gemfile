@@ -14,12 +14,10 @@ gem 'devise'
 gem 'pg'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'rails_workflow', '0.2.2'
+# gem 'rails_workflow', '0.3.3'
+gem 'rails_workflow', path: '../rails_workflow'
 gem 'inherited_resources'
-gem "bootstrap-rails-engine"
 gem "symbolize"
-gem "will_paginate"
-gem "sidekiq"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

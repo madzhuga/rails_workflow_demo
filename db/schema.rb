@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331183631) do
+ActiveRecord::Schema.define(version: 20150707182206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150331183631) do
   create_table "rails_workflow_contexts", force: true do |t|
     t.integer  "parent_id"
     t.string   "parent_type"
-    t.json     "body"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150331183631) do
   create_table "rails_workflow_operation_templates", force: true do |t|
     t.string   "title"
     t.text     "source"
-    t.json     "dependencies"
+    t.text     "dependencies"
     t.string   "operation_class"
     t.integer  "process_template_id"
     t.datetime "created_at"
@@ -84,9 +84,12 @@ ActiveRecord::Schema.define(version: 20150331183631) do
     t.string   "type"
     t.string   "partial_name"
     t.string   "version"
+    t.string   "uuid"
+    t.string   "tag"
   end
 
   add_index "rails_workflow_operation_templates", ["process_template_id"], name: "index_rails_workflow_operation_templates_on_process_template_id", using: :btree
+  add_index "rails_workflow_operation_templates", ["uuid"], name: "index_rails_workflow_operation_templates_on_uuid", using: :btree
 
   create_table "rails_workflow_operations", force: true do |t|
     t.integer  "status"
@@ -96,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150331183631) do
     t.datetime "updated_at"
     t.integer  "process_id"
     t.integer  "template_id"
-    t.json     "dependencies"
+    t.text     "dependencies"
     t.integer  "child_process_id"
     t.integer  "assignment_id"
     t.string   "assignment_type"
@@ -122,7 +125,11 @@ ActiveRecord::Schema.define(version: 20150331183631) do
     t.string   "type"
     t.string   "partial_name"
     t.string   "version"
+    t.string   "uuid"
+    t.string   "tag"
   end
+
+  add_index "rails_workflow_process_templates", ["uuid"], name: "index_rails_workflow_process_templates_on_uuid", using: :btree
 
   create_table "rails_workflow_processes", force: true do |t|
     t.integer  "status"

@@ -1,3 +1,18 @@
+PATH
+  remote: ../rails_workflow
+  specs:
+    rails_workflow (0.3.4)
+      active_model_serializers
+      bootstrap-rails-engine
+      draper
+      guid
+      jquery-rails
+      pg
+      rails (>= 4.1.0)
+      sidekiq
+      slim-rails
+      will_paginate
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -14,6 +29,8 @@ GEM
       activesupport (= 4.1.9)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activemodel (4.1.9)
       activesupport (= 4.1.9)
       builder (~> 3.1)
@@ -28,7 +45,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (5.1.7)
+    autoprefixer-rails (5.2.1)
       execjs
       json
     bcrypt (3.1.10)
@@ -40,7 +57,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-rails-engine (3.1.1.0)
       railties (>= 3.0)
-    bootstrap-sass (3.3.3)
+    bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     builder (3.2.2)
@@ -50,26 +67,27 @@ GEM
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.3.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
-    connection_pool (2.1.2)
+    coffee-script-source (1.9.1.1)
+    connection_pool (2.2.0)
     debug_inspector (0.0.2)
-    devise (3.4.1)
+    devise (3.5.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    draper (1.4.0)
+    draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0)
     erubis (2.7.0)
-    execjs (2.4.0)
+    execjs (2.5.2)
+    guid (0.1.1)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -81,23 +99,23 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
-    jbuilder (2.2.9)
+    jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-rails (3.1.2)
+    jquery-rails (3.1.3)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.2)
+    json (1.8.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mime-types (2.4.3)
-    minitest (5.5.1)
-    multi_json (1.11.0)
+    mime-types (2.6.1)
+    minitest (5.7.0)
+    multi_json (1.11.2)
     orm_adapter (0.5.0)
-    pg (0.18.1)
+    pg (0.18.2)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.9)
@@ -110,16 +128,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.9)
       sprockets-rails (~> 2.0)
-    rails_layout (1.0.24)
-    rails_workflow (0.2.2)
-      bootstrap-rails-engine
-      draper
-      jquery-rails
-      pg
-      rails (>= 4.1.0)
-      sidekiq
-      slim-rails
-      will_paginate
+    rails_layout (1.0.26)
     railties (4.1.9)
       actionpack (= 4.1.9)
       activesupport (= 4.1.9)
@@ -129,7 +138,7 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     redis (3.2.1)
-    redis-namespace (1.5.1)
+    redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     request_store (1.1.0)
     responders (1.1.2)
@@ -143,8 +152,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sidekiq (3.3.2)
-      celluloid (>= 0.16.0)
+    sidekiq (3.4.1)
+      celluloid (~> 0.16.0)
       connection_pool (>= 2.1.1)
       json
       redis (>= 3.0.6)
@@ -152,7 +161,7 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    slim (3.0.2)
+    slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     slim-rails (3.0.1)
@@ -161,13 +170,13 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
-    spring (1.3.3)
-    sprockets (2.12.3)
+    spring (1.3.6)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.4)
+    sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -175,9 +184,9 @@ GEM
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
       i18n
-    temple (0.7.5)
+    temple (0.7.6)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
@@ -198,7 +207,6 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  bootstrap-rails-engine
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   devise
@@ -209,14 +217,15 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.9)
   rails_layout
-  rails_workflow (= 0.2.2)
+  rails_workflow!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  sidekiq
   simple_form
   slim-rails
   spring
   symbolize
   turbolinks
   uglifier (>= 1.3.0)
-  will_paginate
+
+BUNDLED WITH
+   1.10.5

@@ -29,6 +29,8 @@ class CreateWorkflowProcesses < ActiveRecord::Migration
         [:rails_workflow_contexts, [:parent_id, :parent_type]],
         [:rails_workflow_errors, [:parent_id, :parent_type]],
         [:rails_workflow_operation_templates, :process_template_id],
+        [:rails_workflow_operation_templates, :uuid],
+        [:rails_workflow_process_templates, :uuid],
         [:rails_workflow_operations, :process_id],
         [:rails_workflow_operations, :template_id]
     ].each do |idx|
@@ -43,7 +45,7 @@ class CreateWorkflowProcesses < ActiveRecord::Migration
       :rails_workflow_contexts => [
         [:integer,  :parent_id],
         [:string,   :parent_type],
-        [:json,     :body],
+        [:text,     :body],
         [:datetime, :created_at],
         [:datetime, :updated_at],
       ],
@@ -61,8 +63,10 @@ class CreateWorkflowProcesses < ActiveRecord::Migration
       :rails_workflow_operation_templates => [
           [:string,   :title],
           [:string,   :version],
+          [:string,     :uuid],
+          [:string,   :tag],
           [:text,     :source],
-          [:json,     :dependencies],
+          [:text,     :dependencies],
           [:string,   :operation_class],
           [:integer,  :process_template_id],
           [:datetime, :created_at],
@@ -90,7 +94,7 @@ class CreateWorkflowProcesses < ActiveRecord::Migration
           [:datetime, :updated_at],
           [:integer,  :process_id],
           [:integer,  :template_id],
-          [:json,     :dependencies],
+          [:text,     :dependencies],
           [:integer,  :child_process_id],
           [:integer,  :assignment_id],
           [:string,   :assignment_type],
@@ -104,7 +108,9 @@ class CreateWorkflowProcesses < ActiveRecord::Migration
       :rails_workflow_process_templates => [
           [:string,   :title],
           [:text,     :source],
+          [:string,   :uuid],
           [:string,   :version],
+          [:string,   :tag],
           [:string,   :manager_class],
           [:string,   :process_class],
           [:datetime, :created_at],
@@ -141,8 +147,9 @@ class CreateWorkflowProcesses < ActiveRecord::Migration
         [RailsWorkflow::OperationTemplate, :dependencies],
         [RailsWorkflow::Context, :body]
     ].map do |check|
-      if check[0].columns_hash[check[1].to_s].sql_type != "json"
-        change_column check[0].table_name, check[1], "JSON USING #{check[1]}::JSON"
+      if check[0].columns_hash[check[1].to_s].sql_type == "json"
+        # change_column check[0].table_name, check[1], "JSON USING #{check[1]}::JSON"
+        change_column check[0].table_name, check[1], :text
       end
     end
   end
