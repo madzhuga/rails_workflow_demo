@@ -14,8 +14,8 @@ gem 'devise'
 gem 'pg'
 gem 'simple_form'
 gem 'slim-rails'
-# gem 'rails_workflow', '0.3.3'
-gem 'rails_workflow', path: '../rails_workflow'
+gem 'rails_workflow', '0.3.6'
+# gem 'rails_workflow', path: '../rails_workflow'
 gem 'inherited_resources'
 gem "symbolize"
 group :development do
