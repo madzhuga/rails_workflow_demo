@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 20150707182206) do
     t.text     "instruction"
     t.boolean  "is_background",       default: true
     t.string   "type"
-    t.string   "partial_name"
     t.string   "version"
     t.string   "uuid"
     t.string   "tag"
+    t.string   "partial_name"
   end
 
   add_index "rails_workflow_operation_templates", ["process_template_id"], name: "index_rails_workflow_operation_templates_on_process_template_id", using: :btree
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 20150707182206) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
-    t.string   "partial_name"
-    t.string   "version"
     t.string   "uuid"
+    t.string   "version"
     t.string   "tag"
+    t.string   "partial_name"
   end
 
   add_index "rails_workflow_process_templates", ["uuid"], name: "index_rails_workflow_process_templates_on_uuid", using: :btree
